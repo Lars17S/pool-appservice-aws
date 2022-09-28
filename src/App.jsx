@@ -1,10 +1,11 @@
-import "@aws-amplify/ui-react/styles.css";
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomepageView from "./views/HomepageView";
-import Header from "./components/Header";
+// eslint-disable-next-line import/no-unresolved
+import '@aws-amplify/ui-react/styles.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomepageView from './views/HomepageView';
+import Header from './components/Header';
 
-const App = () => {
+function App() {
   const [user, setUser] = useState(null);
   return (
     <BrowserRouter>
@@ -16,6 +17,6 @@ const App = () => {
       </>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

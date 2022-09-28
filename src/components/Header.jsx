@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import React, { useEffect } from "react";
-import { mobile, tablet } from "../responsive";
-import { Auth, Hub } from "aws-amplify";
-import { Button } from "@mui/material";
+/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import { Auth, Hub } from 'aws-amplify';
+import { Button } from '@mui/material';
+import { mobile, tablet } from '../responsive';
 
 const Container = styled.div`
   height: 60px;
@@ -66,20 +67,24 @@ const Username = styled.h4`
   }
 `;
 
-const Header = ({ user, setUser }) => {
+function Header({ user, setUser }) {
+  const getUser = async () => {
+    const userData = await Auth.currentAuthenticatedUser();
+    return userData;
+  };
+
   useEffect(() => {
-    Hub.listen("auth", ({ payload: { event, data } }) => {
+    Hub.listen('auth', ({ payload: { event } }) => {
       switch (event) {
-        case "signIn":
-        case "cognitoHostedUI":
+        case 'signIn':
+        case 'cognitoHostedUI':
           getUser().then((userData) => setUser(userData));
           break;
-        case "signOut":
+        case 'signOut':
           setUser(null);
           break;
-        case "signIn_failure":
-        case "cognitoHostedUI_failure":
-          console.log("Sign in failure", data);
+        case 'signIn_failure':
+        case 'cognitoHostedUI_failure':
           break;
         default:
           break;
@@ -89,21 +94,12 @@ const Header = ({ user, setUser }) => {
     getUser().then((userData) => setUser(userData));
   }, [setUser]);
 
-  const getUser = async () => {
-    try {
-      const userData = await Auth.currentAuthenticatedUser();
-      return userData;
-    } catch {
-      return console.log("Not signed in");
-    }
-  };
-
   return (
     <Container>
       <Wrapper>
-        <Left></Left>
+        <Left />
         <Center>
-          <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+          <Link to="/" style={{ color: 'black', textDecoration: 'none' }}>
             <Logo>Pool AppService</Logo>
           </Link>
         </Center>
@@ -114,14 +110,12 @@ const Header = ({ user, setUser }) => {
               <Button onClick={() => Auth.signOut()}>Logout</Button>
             </>
           ) : (
-            <>
-              <Button onClick={() => Auth.federatedSignIn()}>Login</Button>
-            </>
+            <Button onClick={() => Auth.federatedSignIn()}>Login</Button>
           )}
         </Right>
       </Wrapper>
     </Container>
   );
-};
+}
 
 export default Header;
