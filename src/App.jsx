@@ -6,6 +6,9 @@ import HomepageView from './views/HomepageView';
 import Header from './components/Header';
 
 import Chatbot from "react-chatbot-kit";
+import ActionProvider from "./chatbot/ActionProvider";
+import MessageParser from "./chatbot/MessageParser";
+import config from "./chatbot/config";
 import { ConditionallyRender } from "react-util-kit";
 import { ReactComponent as ButtonIcon } from "./chatbot/icons/robot.svg";
 import "react-chatbot-kit/build/main.css";
