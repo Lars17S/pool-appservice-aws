@@ -5,6 +5,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomepageView from './views/HomepageView';
 import Header from './components/Header';
 
+import Chatbot from "react-chatbot-kit";
+import { ConditionallyRender } from "react-util-kit";
+import { ReactComponent as ButtonIcon } from "./chatbot/icons/robot.svg";
+import "react-chatbot-kit/build/main.css";
+import "./App.css";
+
+
+
 function App() {
   const [user, setUser] = useState(null);
   return (
@@ -14,6 +22,25 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomepageView />} />
         </Routes>
+        <div className="app-chatbot-container">
+          <ConditionallyRender
+            ifTrue={showChatbot}
+            show={
+              <Chatbot
+                config={config}
+                messageParser={MessageParser}
+                actionProvider={ActionProvider}
+              />
+            }
+          />
+        </div>
+
+        <button
+          className="app-chatbot-button"
+          onClick={() => toggleChatbot((prev) => !prev)}
+        >
+          <ButtonIcon className="app-chatbot-button-icon" />
+        </button>
       </>
     </BrowserRouter>
   );
