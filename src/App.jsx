@@ -15,6 +15,7 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [showChatbot, toggleChatbot] = useState(true);
   return (
     <BrowserRouter>
       <>
