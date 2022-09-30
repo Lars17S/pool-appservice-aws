@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const ActionProvider = ({ createChatBotMessage, setState, children }) => {
+function ActionProvider({ createChatBotMessage, setState, children }) {
   const handleLocation = () => {
     const botMessage = createChatBotMessage('Nuestra dirección es Calle 53, Delegacion Coyoacan CDMX');
 
@@ -36,8 +37,6 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       messages: [...prev.messages, botMessage],
     }));
   };
-
-  
 
   const handleProductos = () => {
     const botMessage = createChatBotMessage('Para ver el catalogo de productos, accede a la sección de productos en esta página');
@@ -93,21 +92,24 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
     }));
   };
 
-
-
   return (
     <div>
-      {React.Children.map(children, (child) => {
-        return React.cloneElement(child, {
-          actions: {
-            handleLocation, handleWrokingDays, handleContacto, handleMetodosPago,
-            handleProductos, handleServicios, handleAgeCitas, handleConCitas,
-            handleCanCitas, handleModCitas
-          },
-        });
-      })}
+      {React.Children.map(children, (child) => React.cloneElement(child, {
+        actions: {
+          handleLocation,
+          handleWrokingDays,
+          handleContacto,
+          handleMetodosPago,
+          handleProductos,
+          handleServicios,
+          handleAgeCitas,
+          handleConCitas,
+          handleCanCitas,
+          handleModCitas,
+        },
+      }))}
     </div>
   );
-};
+}
 
 export default ActionProvider;

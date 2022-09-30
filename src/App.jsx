@@ -2,19 +2,17 @@
 import '@aws-amplify/ui-react/styles.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Chatbot from 'react-chatbot-kit';
+import { ConditionallyRender } from 'react-util-kit';
 import HomepageView from './views/HomepageView';
 import Header from './components/Header';
 
-import Chatbot from "react-chatbot-kit";
-import ActionProvider from "./chatbot/ActionProvider";
-import MessageParser from "./chatbot/MessageParser";
-import config from "./chatbot/config";
-import { ConditionallyRender } from "react-util-kit";
-import { ReactComponent as ButtonIcon } from "./chatbot/icons/robot.svg";
-import "react-chatbot-kit/build/main.css";
-import "./App.css";
-
-
+import ActionProvider from './chatbot/ActionProvider';
+import MessageParser from './chatbot/MessageParser';
+import config from './chatbot/config';
+import { ReactComponent as ButtonIcon } from './chatbot/icons/robot.svg';
+import 'react-chatbot-kit/build/main.css';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,17 +27,18 @@ function App() {
         <div className="app-chatbot-container">
           <ConditionallyRender
             ifTrue={showChatbot}
-            show={
+            show={(
               <Chatbot
                 config={config}
                 messageParser={MessageParser}
                 actionProvider={ActionProvider}
               />
-            }
+            )}
           />
         </div>
 
         <button
+          type="button"
           className="app-chatbot-button"
           onClick={() => toggleChatbot((prev) => !prev)}
         >

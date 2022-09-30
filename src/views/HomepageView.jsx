@@ -1,10 +1,13 @@
 import React from 'react';
+import Announcement from '../components/Announcement';
+import Slider from '../components/Slider';
 
 function HomepageView() {
   return (
-    <div>
-      <h1>Homepage View</h1>
-    </div>
+    <>
+      <Announcement />
+      <Slider />
+    </>
   );
 }
 
