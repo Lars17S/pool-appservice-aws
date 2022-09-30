@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import React, { useEffect } from 'react';
-import { Auth, Hub } from 'aws-amplify';
+import React from 'react';
+import { Auth } from 'aws-amplify';
 import { Button } from '@mui/material';
 import { mobile, tablet } from '../responsive';
 
@@ -67,33 +67,7 @@ const Username = styled.h4`
   }
 `;
 
-function Header({ user, setUser }) {
-  const getUser = async () => {
-    const userData = await Auth.currentAuthenticatedUser();
-    return userData;
-  };
-
-  useEffect(() => {
-    Hub.listen('auth', ({ payload: { event } }) => {
-      switch (event) {
-        case 'signIn':
-        case 'cognitoHostedUI':
-          getUser().then((userData) => setUser(userData));
-          break;
-        case 'signOut':
-          setUser(null);
-          break;
-        case 'signIn_failure':
-        case 'cognitoHostedUI_failure':
-          break;
-        default:
-          break;
-      }
-    });
-
-    getUser().then((userData) => setUser(userData));
-  }, [setUser]);
-
+function Header({ user }) {
   return (
     <Container>
       <Wrapper>
@@ -106,7 +80,7 @@ function Header({ user, setUser }) {
         <Right>
           {user ? (
             <>
-              <Username>{user.username}</Username>
+              <Username>{user.attributes.email}</Username>
               <Button onClick={() => Auth.signOut()}>Logout</Button>
             </>
           ) : (
