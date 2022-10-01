@@ -6,7 +6,10 @@ import Chatbot from 'react-chatbot-kit';
 import { ConditionallyRender } from 'react-util-kit';
 import { Auth, Hub } from 'aws-amplify';
 import HomepageView from './views/HomepageView';
-import ServicesView from './views/ServicesView';
+import MaintenanceView from './views/MaintenanceView';
+import InstallationView from './views/InstallationView';
+import OrderInstallationView from './views/OrderInstallationView';
+import SubscribeMaintenanceView from './views/SubscribeMaintenanceView';
 import Header from './components/Header';
 import ActionProvider from './chatbot/ActionProvider';
 import MessageParser from './chatbot/MessageParser';
@@ -52,7 +55,10 @@ function App() {
       <>
         <Header user={user} />
         <Routes>
-          <Route path="/services" element={<ServicesView />} />
+          <Route path="/subscribemaintenance" element={<SubscribeMaintenanceView />} />
+          <Route path="/orderinstallation" element={<OrderInstallationView />} />
+          <Route path="/installation" element={<InstallationView />} />
+          <Route path="/maintenance" element={<MaintenanceView />} />
           <Route exact path="/" element={<HomepageView />} />
         </Routes>
         <div className="app-chatbot-container">

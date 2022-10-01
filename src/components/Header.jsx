@@ -86,6 +86,12 @@ function Header({ user }) {
           ) : (
             <Button onClick={() => Auth.federatedSignIn()}>Login</Button>
           )}
+          <Link to="/installation">
+            <Button>Instalaciones</Button>
+          </Link>
+          <Link to="/maintenance">
+            <Button>Mantenimiento</Button>
+          </Link>
         </Right>
       </Wrapper>
     </Container>

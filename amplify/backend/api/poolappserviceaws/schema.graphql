@@ -3,9 +3,28 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Note @model @auth(rules: [{ allow: public }]) {
+
+type SliderItem @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String!
+  description: String
+  image: String!
+  bg: String!
+  url: String!
+}
+
+type InstallationService @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!
-  description: String
-  image: String
+  description: String!
+  image: String!
+  price: Float!
+}
+
+type MaintenanceService @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String!
+  image: String!
+  price: Float!
 }

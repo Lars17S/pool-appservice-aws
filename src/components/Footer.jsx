@@ -139,10 +139,20 @@ function Footer() {
             <Button
               variant="text"
               onClick={() => {
-                navigate('/services', { state: 'pc-parts' });
+                navigate('/installation');
               }}
             >
-              Servicios
+              Servicios de instalaciones
+            </Button>
+          </ListItem>
+          <ListItem>
+            <Button
+              variant="text"
+              onClick={() => {
+                navigate('/maintenance');
+              }}
+            >
+              Servicios de mantenimiento
             </Button>
           </ListItem>
         </List>

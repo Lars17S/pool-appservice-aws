@@ -1,46 +1,148 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createNote = /* GraphQL */ `
-  mutation CreateNote(
-    $input: CreateNoteInput!
-    $condition: ModelNoteConditionInput
+export const createSliderItem = /* GraphQL */ `
+  mutation CreateSliderItem(
+    $input: CreateSliderItemInput!
+    $condition: ModelSliderItemConditionInput
   ) {
-    createNote(input: $input, condition: $condition) {
+    createSliderItem(input: $input, condition: $condition) {
       id
-      name
+      title
       description
       image
+      bg
+      url
       createdAt
       updatedAt
     }
   }
 `;
-export const updateNote = /* GraphQL */ `
-  mutation UpdateNote(
-    $input: UpdateNoteInput!
-    $condition: ModelNoteConditionInput
+export const updateSliderItem = /* GraphQL */ `
+  mutation UpdateSliderItem(
+    $input: UpdateSliderItemInput!
+    $condition: ModelSliderItemConditionInput
   ) {
-    updateNote(input: $input, condition: $condition) {
+    updateSliderItem(input: $input, condition: $condition) {
       id
-      name
+      title
       description
       image
+      bg
+      url
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteNote = /* GraphQL */ `
-  mutation DeleteNote(
-    $input: DeleteNoteInput!
-    $condition: ModelNoteConditionInput
+export const deleteSliderItem = /* GraphQL */ `
+  mutation DeleteSliderItem(
+    $input: DeleteSliderItemInput!
+    $condition: ModelSliderItemConditionInput
   ) {
-    deleteNote(input: $input, condition: $condition) {
+    deleteSliderItem(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      bg
+      url
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createInstallationService = /* GraphQL */ `
+  mutation CreateInstallationService(
+    $input: CreateInstallationServiceInput!
+    $condition: ModelInstallationServiceConditionInput
+  ) {
+    createInstallationService(input: $input, condition: $condition) {
       id
       name
       description
       image
+      price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateInstallationService = /* GraphQL */ `
+  mutation UpdateInstallationService(
+    $input: UpdateInstallationServiceInput!
+    $condition: ModelInstallationServiceConditionInput
+  ) {
+    updateInstallationService(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteInstallationService = /* GraphQL */ `
+  mutation DeleteInstallationService(
+    $input: DeleteInstallationServiceInput!
+    $condition: ModelInstallationServiceConditionInput
+  ) {
+    deleteInstallationService(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createMaintenanceService = /* GraphQL */ `
+  mutation CreateMaintenanceService(
+    $input: CreateMaintenanceServiceInput!
+    $condition: ModelMaintenanceServiceConditionInput
+  ) {
+    createMaintenanceService(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMaintenanceService = /* GraphQL */ `
+  mutation UpdateMaintenanceService(
+    $input: UpdateMaintenanceServiceInput!
+    $condition: ModelMaintenanceServiceConditionInput
+  ) {
+    updateMaintenanceService(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      price
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMaintenanceService = /* GraphQL */ `
+  mutation DeleteMaintenanceService(
+    $input: DeleteMaintenanceServiceInput!
+    $condition: ModelMaintenanceServiceConditionInput
+  ) {
+    deleteMaintenanceService(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      price
       createdAt
       updatedAt
     }

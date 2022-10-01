@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { API } from 'aws-amplify';
 import { mobile, tablet } from '../responsive';
+import { listSliderItems } from '../graphql/queries';
 
 const Container = styled.div`
   width: 100%;
@@ -84,40 +86,29 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export const sliderItems = [
-  {
-    id: 1,
-    title: 'Instalación Albercas',
-    img: 'https://i.pinimg.com/originals/ff/51/64/ff5164c8eda18c9beea4079b09694934.jpg',
-    desc: 'Tenemos los paquetes de instalación hechos para ti.',
-    bg: 'f5fafd',
-    cat: 'installation-package',
-  },
-  {
-    id: 2,
-    title: 'Servicio de mantenimiento',
-    img: 'https://5.imimg.com/data5/SELLER/Default/2021/2/BJ/IH/AG/33886061/swimming-pool-maintenance-service.jpeg',
-    desc: 'Ofrecemos servicio de mantenimiento en todo CDMX.',
-    bg: 'fcf1ed',
-    cat: 'maintenance',
-  },
-];
-
 function Slider() {
+  const [sliderItems, setSliderItems] = useState([]);
   const [slideIndex, setSlideIndex] = useState(0);
-  const rightLimit = 1;
+  const rightLimit = sliderItems.length - 1;
   const leftLimit = 0;
+
+  async function fetchSliderItems() {
+    const apiData = await API.graphql({ query: listSliderItems });
+    const sliderItemsFromAPI = apiData.data.listSliderItems.items;
+    setSliderItems(sliderItemsFromAPI);
+  }
+
   const handleClick = (direction) => {
     if (direction === 'left') {
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : rightLimit);
     } else {
-      setSlideIndex(slideIndex < 1 ? slideIndex + 1 : leftLimit);
+      setSlideIndex(slideIndex < rightLimit ? slideIndex + 1 : leftLimit);
     }
   };
-  const navigate = useNavigate();
-  const routeChange = (path) => {
-    navigate('/services', { state: path });
-  };
+
+  useEffect(() => {
+    fetchSliderItems();
+  }, []);
 
   return (
     <Container>
@@ -128,12 +119,14 @@ function Slider() {
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
-              <Image src={item.img} />
+              <Image src={item.image} />
             </ImgContainer>
             <InfoContainer>
               <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button onClick={() => routeChange(item.cat)}>SHOW NOW</Button>
+              <Desc>{item.description}</Desc>
+              <Link to={item.url}>
+                <Button>Saber más</Button>
+              </Link>
             </InfoContainer>
           </Slide>
         ))}
