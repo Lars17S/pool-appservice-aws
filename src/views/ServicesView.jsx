@@ -11,18 +11,15 @@ const Title = styled.h1`
 `;
 
 function ServicesView() {
-  const { state } = useLocation();
   const [filters] = React.useState({
-    color: 'rgb',
-    type: state,
+    service_type: 'instalacion',
   });
-  const [sort] = React.useState('type');
 
   return (
     <Container>
       <Announcement />
       <Title>{filters.type}</Title>
-      <Services filters={filters} sort={sort} />
+      <Services filters={filters} />
       <Footer />
     </Container>
   );
