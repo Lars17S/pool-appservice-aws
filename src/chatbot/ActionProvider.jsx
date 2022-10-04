@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
 function ActionProvider({ createChatBotMessage, setState, children }) {
@@ -92,6 +91,45 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
+  const handleAppBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Puedes crear, consultar, modificar o cancelar tus citas',
+      // {
+      //   widget: "Agregar widget de citas",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleServBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Puedes consultar los servicios en la sección de servicios',
+      // {
+      //   widget: "Agregar widget de servicios",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleProdBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Puedes consultar los productos en la sección de servicios',
+      // {
+      //   widget: "Agregar widget de servicios",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
   return (
     <div>
       {React.Children.map(children, (child) => React.cloneElement(child, {
@@ -106,6 +144,9 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
           handleConCitas,
           handleCanCitas,
           handleModCitas,
+          handleAppBtn,
+          handleServBtn,
+          handleProdBtn,
         },
       }))}
     </div>
