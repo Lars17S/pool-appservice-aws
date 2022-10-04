@@ -28,15 +28,3 @@ type MaintenanceService @model @auth(rules: [{ allow: public }]) {
   image: String!
   price: Float!
 }
-
-type InstallationOrder @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  userId: ID!
-  serviceId: ID!
-  userName: String!
-  phoneNumber: String!
-  email: String
-  address: String!
-  appointmentDate: String!
-  appointmentStatus: String!
-}
