@@ -110,3 +110,48 @@ export const listMaintenanceServices = /* GraphQL */ `
     }
   }
 `;
+export const getInstallationOrder = /* GraphQL */ `
+  query GetInstallationOrder($id: ID!) {
+    getInstallationOrder(id: $id) {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listInstallationOrders = /* GraphQL */ `
+  query ListInstallationOrders(
+    $filter: ModelInstallationOrderFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listInstallationOrders(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userId
+        serviceId
+        userName
+        phoneNumber
+        email
+        address
+        appointmentDate
+        appointmentStatus
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

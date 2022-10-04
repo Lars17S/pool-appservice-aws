@@ -148,3 +148,63 @@ export const deleteMaintenanceService = /* GraphQL */ `
     }
   }
 `;
+export const createInstallationOrder = /* GraphQL */ `
+  mutation CreateInstallationOrder(
+    $input: CreateInstallationOrderInput!
+    $condition: ModelInstallationOrderConditionInput
+  ) {
+    createInstallationOrder(input: $input, condition: $condition) {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateInstallationOrder = /* GraphQL */ `
+  mutation UpdateInstallationOrder(
+    $input: UpdateInstallationOrderInput!
+    $condition: ModelInstallationOrderConditionInput
+  ) {
+    updateInstallationOrder(input: $input, condition: $condition) {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteInstallationOrder = /* GraphQL */ `
+  mutation DeleteInstallationOrder(
+    $input: DeleteInstallationOrderInput!
+    $condition: ModelInstallationOrderConditionInput
+  ) {
+    deleteInstallationOrder(input: $input, condition: $condition) {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;

@@ -1,9 +1,5 @@
 /* eslint-disable react/prop-types */
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from '@mui/icons-material';
+import ScheduleSendIcon from '@mui/icons-material/ScheduleSend';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import React from 'react';
@@ -68,22 +64,16 @@ const Icon = styled.div`
     }
   `;
 
-function InstallationItem({ image }) {
+function InstallationItem({ id, image }) {
   return (
     <Container>
       <Circle />
       <Image src={image} />
       <Info>
         <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon id="shop-product">
-          <Link to="/orderinstallation">
-            <SearchOutlined />
+          <Link to="/orderinstallation" state={{ serviceId: id }}>
+            <ScheduleSendIcon />
           </Link>
-        </Icon>
-        <Icon>
-          <FavoriteBorderOutlined />
         </Icon>
       </Info>
     </Container>
