@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
-function ActionProvider({ createChatBotMessage, setState, children }) {
+const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const handleLocation = () => {
     const botMessage = createChatBotMessage('Nuestra dirección es Calle 53, Delegacion Coyoacan CDMX');
 
@@ -20,6 +19,7 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
+
   const handleMetodosPago = () => {
     const botMessage = createChatBotMessage('Aceptamos pagos en efectivo, PayPal y tarjetas de crédito Visa y MasterCard');
 
@@ -37,6 +37,8 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
       messages: [...prev.messages, botMessage],
     }));
   };
+
+  
 
   const handleProductos = () => {
     const botMessage = createChatBotMessage('Para ver el catalogo de productos, accede a la sección de productos en esta página');
@@ -92,24 +94,60 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
+  const handleAppBtn = () => {
+    const botMessage = createChatBotMessage(
+      "Puedes crear, consultar, modificar o cancelar tus citas",
+      // {
+      //   widget: "Agregar widget de citas",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleServBtn = () => {
+    const botMessage = createChatBotMessage(
+      "Puedes consultar los servicios en la sección de servicios",
+      // {
+      //   widget: "Agregar widget de servicios",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleProdBtn = () => {
+    const botMessage = createChatBotMessage(
+      "Puedes consultar los productos en la sección de servicios",
+      // {
+      //   widget: "Agregar widget de servicios",
+      // }
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+
+
   return (
     <div>
-      {React.Children.map(children, (child) => React.cloneElement(child, {
-        actions: {
-          handleLocation,
-          handleWrokingDays,
-          handleContacto,
-          handleMetodosPago,
-          handleProductos,
-          handleServicios,
-          handleAgeCitas,
-          handleConCitas,
-          handleCanCitas,
-          handleModCitas,
-        },
-      }))}
+      {React.Children.map(children, (child) => {
+        return React.cloneElement(child, {
+          actions: {
+            handleLocation, handleWrokingDays, handleContacto, handleMetodosPago,
+            handleProductos, handleServicios, handleAgeCitas, handleConCitas,
+            handleCanCitas, handleModCitas, handleAppBtn, handleServBtn, handleProdBtn
+          },
+        });
+      })}
     </div>
   );
-}
+};
 
 export default ActionProvider;

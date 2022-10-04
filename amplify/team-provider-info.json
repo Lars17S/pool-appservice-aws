@@ -16,5 +16,18 @@
         "poolappserviceaws61bfaf89": {}
       }
     }
+  },
+  "poolapp": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-poolappserviceaws-poolapp-204600-authRole",
+      "UnauthRoleArn": "arn:aws:iam::911440382301:role/amplify-poolappserviceaws-poolapp-204600-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::911440382301:role/amplify-poolappserviceaws-poolapp-204600-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-poolappserviceaws-poolapp-204600-deployment",
+      "UnauthRoleName": "amplify-poolappserviceaws-poolapp-204600-unauthRole",
+      "StackName": "amplify-poolappserviceaws-poolapp-204600",
+      "StackId": "arn:aws:cloudformation:us-east-2:911440382301:stack/amplify-poolappserviceaws-poolapp-204600/4d8c6a80-4386-11ed-9771-061b6a54030e",
+      "AmplifyAppId": "d98zbpnvm6y5x"
+    }
   }
 }
