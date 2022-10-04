@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MessageParser = ({ children, actions }) => {
+function MessageParser({ children, actions }) {
   const parse = (message) => {
-    message = message.toLowerCase(); 
+    message = message.toLowerCase();
     if (message.includes('direccion') | message.includes('encuentran') | message.includes('ubicacion') | message.includes('ubicación') | message.includes('dirección')) {
       actions.handleLocation();
     }
@@ -18,7 +18,7 @@ const MessageParser = ({ children, actions }) => {
     if (message.includes('cancelar') | message.includes('agendar')) {
       actions.handleCanCitas();
     }
-    if (message.includes('cuando es') | message.includes('fecha de mi cita') ) {
+    if (message.includes('cuando es') | message.includes('fecha de mi cita')) {
       actions.handleConCitas();
     }
     if (message.includes('contacto') | message.includes('numero') | message.includes('correo')) {
@@ -37,14 +37,12 @@ const MessageParser = ({ children, actions }) => {
 
   return (
     <div>
-      {React.Children.map(children, (child) => {
-        return React.cloneElement(child, {
-          parse: parse,
-          actions,
-        });
-      })}
+      {React.Children.map(children, (child) => React.cloneElement(child, {
+        parse,
+        actions,
+      }))}
     </div>
   );
-};
+}
 
 export default MessageParser;

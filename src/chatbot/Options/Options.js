@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import "./Options.css";
+import './Options.css';
 
-const Options = (props) => {
+function Options(props) {
   const options = [
     {
-      text: "Citas",
+      text: 'Citas',
       handler: props.actionProvider.handleAppBtn,
       id: 1,
     },
-    { text: "Servicios", handler: props.actionProvider.handleServBtn , id: 2 },
-    { text: "Productos", handler: props.actionProvider.handleProdBtn, id: 3 },
+    { text: 'Servicios', handler: props.actionProvider.handleServBtn, id: 2 },
+    { text: 'Productos', handler: props.actionProvider.handleProdBtn, id: 3 },
   ];
 
   const buttonsMarkup = options.map((option) => (
@@ -20,6 +20,6 @@ const Options = (props) => {
   ));
 
   return <div className="options-container">{buttonsMarkup}</div>;
-};
+}
 
 export default Options;
