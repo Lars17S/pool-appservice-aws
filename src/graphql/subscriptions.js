@@ -121,3 +121,54 @@ export const onDeleteMaintenanceService = /* GraphQL */ `
     }
   }
 `;
+export const onCreateInstallationOrder = /* GraphQL */ `
+  subscription OnCreateInstallationOrder {
+    onCreateInstallationOrder {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateInstallationOrder = /* GraphQL */ `
+  subscription OnUpdateInstallationOrder {
+    onUpdateInstallationOrder {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteInstallationOrder = /* GraphQL */ `
+  subscription OnDeleteInstallationOrder {
+    onDeleteInstallationOrder {
+      id
+      userId
+      serviceId
+      userName
+      phoneNumber
+      email
+      address
+      appointmentDate
+      appointmentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
