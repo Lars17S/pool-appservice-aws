@@ -1,13 +1,13 @@
 // Config starter code
-import React from "react";
+import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
-import Options from "./Options/Options";
+import Options from './Options/Options';
 
 const botName = '';
 
 const config = {
-  initialMessages: [createChatBotMessage(`¡Hola! Soy tu asistente inteligente de Albercas Cleaner ¿qué puedo hacer por ti?`, {widget: "options"})],
-  botName: botName,
+  initialMessages: [createChatBotMessage('¡Hola! Soy tu asistente inteligente de Albercas Cleaner ¿qué puedo hacer por ti?', { widget: 'options' })],
+  botName,
   customStyles: {
     botMessageBox: {
       backgroundColor: '#376B7E',
@@ -17,8 +17,8 @@ const config = {
     },
   },
   widgets: [{
-    widgetName: "options",
-    widgetFunc: (props) => <Options {...props}/>,
+    widgetName: 'options',
+    widgetFunc: (props) => <Options {...props} />,
   }],
 };
 
