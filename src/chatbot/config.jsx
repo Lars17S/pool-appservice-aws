@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 // Config starter code
 import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
