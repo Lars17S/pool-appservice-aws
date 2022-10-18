@@ -90,7 +90,7 @@ const Description = styled.p`
   color: white;
 `
 
-function InstallationItem({ id, image, name }) {
+function InstallationItem({ id, image, name, description }) {
   return (
     <Container>
       <Circle />
