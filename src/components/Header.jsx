@@ -81,6 +81,9 @@ function Header({ user }) {
           {user ? (
             <>
               <Username>{user.attributes.email}</Username>
+              <Link to="/appointment">
+                <Button>Citas</Button>
+              </Link>
               <Button onClick={() => Auth.signOut()}>Logout</Button>
             </>
           ) : (

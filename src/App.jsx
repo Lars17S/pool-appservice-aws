@@ -7,6 +7,7 @@ import { ConditionallyRender } from 'react-util-kit';
 import { Auth, Hub } from 'aws-amplify';
 import HomepageView from './views/HomepageView';
 import MaintenanceView from './views/MaintenanceView';
+import AppointmentView from './views/AppointmentView';
 import InstallationView from './views/InstallationView';
 import OrderInstallationView from './views/OrderInstallationView';
 import SubscribeMaintenanceView from './views/SubscribeMaintenanceView';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/orderinstallation" element={<OrderInstallationView />} />
           <Route path="/installation" element={<InstallationView />} />
           <Route path="/maintenance" element={<MaintenanceView />} />
+          <Route path="/appointment" element={<AppointmentView />} />
           <Route exact path="/" element={<HomepageView />} />
         </Routes>
         <div className="app-chatbot-container">
