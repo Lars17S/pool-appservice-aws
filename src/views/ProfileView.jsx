@@ -25,7 +25,7 @@ const Title = styled.h1`
 const Invisible = styled.span`
 opacity: 0.0;`;
 
-function AppointmentView() {
+function ProfileView() {
   const [orders, setOrders] = useState([]);
 
   async function getUserId() {
@@ -65,7 +65,6 @@ function AppointmentView() {
         eq: String(userId), // filter priority = 1
       },
     };
-    console.log(filter);
     const apiData = await API.graphql({
       query: listInstallationOrders,
       variables: { filter },
@@ -80,7 +79,7 @@ function AppointmentView() {
   return (
     <Container>
       <Announcement />
-      <Title>Citas</Title>
+      <Title>Perfil</Title>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -143,4 +142,4 @@ function AppointmentView() {
   );
 }
 
-export default AppointmentView;
+export default ProfileView;

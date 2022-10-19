@@ -81,9 +81,6 @@ function Header({ user }) {
           {user ? (
             <>
               <Username>{user.attributes.email}</Username>
-              <Link to="/appointment">
-                <Button>Citas</Button>
-              </Link>
               <Button onClick={() => Auth.signOut()}>Logout</Button>
             </>
           ) : (
@@ -95,6 +92,13 @@ function Header({ user }) {
           <Link to="/maintenance">
             <Button>Mantenimiento</Button>
           </Link>
+          {user ? (
+            <Link to="/profile">
+              <Button>Perfil</Button>
+            </Link>
+          ) : (
+            <span />
+          )}
         </Right>
       </Wrapper>
     </Container>
