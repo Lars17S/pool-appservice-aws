@@ -92,6 +92,13 @@ function Header({ user }) {
           <Link to="/maintenance">
             <Button>Mantenimiento</Button>
           </Link>
+          {user ? (
+            <Link to="/profile">
+              <Button>Perfil</Button>
+            </Link>
+          ) : (
+            <span />
+          )}
         </Right>
       </Wrapper>
     </Container>
