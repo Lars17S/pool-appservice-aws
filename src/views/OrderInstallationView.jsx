@@ -9,6 +9,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Stack from '@mui/material/Stack';
 import { createInstallationOrder } from '../graphql/mutations';
 import styled from "styled-components";
+import Announcement from '../components/Announcement';
+import Footer from '../components/Footer';
 
 function OrderInstallationView() {
   const location = useLocation();
@@ -67,7 +69,9 @@ function OrderInstallationView() {
     });
   }
 
-  const Container = styled.div`
+  const Container = styled.div``;
+
+  const FormContainer = styled.div`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -75,15 +79,21 @@ function OrderInstallationView() {
     justify-content: center;
   `
   const OrderForm = styled.form`
-    max-width: 40%;
+    max-width: 50%;
     display: block;
     align-items: center;
     justify-content: center;
   `
+  const Title = styled.h1`
+    margin: 20px;
+  `;
   
 
   return (
     <Container>
+    <Announcement />
+    <Title>Agenda tu cita</Title>
+    <FormContainer>
       <Stack spacing={3}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <OrderForm onSubmit={createOrder}>
@@ -138,6 +148,8 @@ function OrderInstallationView() {
           </OrderForm>
         </LocalizationProvider>
       </Stack>
+      </FormContainer>
+      <Footer />
     </Container>
   );
 }
