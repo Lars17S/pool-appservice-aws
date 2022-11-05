@@ -6,15 +6,10 @@ import React from 'react';
 
 import './Options.css';
 
-function Options(props) {
+function OptionsServ(props) {
   const options = [
-    {
-      text: 'Citas',
-      handler: props.actionProvider.handleAppBtn,
-      id: 1,
-    },
-    { text: 'Servicios', handler: props.actionProvider.handleServBtn, id: 2 },
-    { text: 'Contacto', handler: props.actionProvider.handleContacto, id: 3 },
+    { text: 'Mantenimiento', handler: props.actionProvider.handleManBtn, id: 1 },
+    { text: 'Instalaciones', handler: props.actionProvider.handleInstBtn, id: 2 },
   ];
 
   const buttonsMarkup = options.map((option) => (
@@ -26,4 +21,4 @@ function Options(props) {
   return <div className="options-container">{buttonsMarkup}</div>;
 }
 
-export default Options;
+export default OptionsServ;

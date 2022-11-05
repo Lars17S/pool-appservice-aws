@@ -12,7 +12,7 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
   };
 
   const handleContacto = () => {
-    const botMessage = createChatBotMessage('Nuestro telefono es 55-7962-1523 y nuestro correo es pool.app.service@gmail.com');
+    const botMessage = createChatBotMessage('Direccion: Calle 53, Delegacion Coyoacan CDMX. Telefono: 55 7962 1523. Correo: pool.app.service@gmail.com');
 
     setState((prev) => ({
       ...prev,
@@ -31,15 +31,6 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
 
   const handleWrokingDays = () => {
     const botMessage = createChatBotMessage('Nuestro horario de trabajo es de Lunes a Viernes de 8:00 a 16:00');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-
-  const handleProductos = () => {
-    const botMessage = createChatBotMessage('Para ver el catalogo de productos, accede a la sección de productos en esta página');
 
     setState((prev) => ({
       ...prev,
@@ -94,10 +85,29 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
 
   const handleAppBtn = () => {
     const botMessage = createChatBotMessage(
-      'Puedes crear, consultar, modificar o cancelar tus citas',
-      // {
-      //   widget: "Agregar widget de citas",
-      // }
+      'Puedes consultar o cancelar tus citas',
+      {
+        widget: 'AppOptions',
+      },
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleConsBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Ingresa el folio de la cita',
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+  const handleCanBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Ingresa el folio de la cita a cancelar',
     );
     setState((prev) => ({
       ...prev,
@@ -107,10 +117,30 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
 
   const handleServBtn = () => {
     const botMessage = createChatBotMessage(
-      'Puedes consultar los servicios en la sección de servicios',
-      // {
-      //   widget: "Agregar widget de servicios",
-      // }
+      'Puedes consultar los servicios de instalación o servicios de mantenimiento',
+      {
+        widget: 'ServOptions',
+      },
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleManBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Servicios de mantenimiento',
+    );
+    setState((prev) => ({
+      ...prev,
+      messages: [...prev.messages, botMessage],
+    }));
+  };
+
+  const handleInstBtn = () => {
+    const botMessage = createChatBotMessage(
+      'Servicios de instalación',
     );
     setState((prev) => ({
       ...prev,
@@ -139,7 +169,6 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
           handleWrokingDays,
           handleContacto,
           handleMetodosPago,
-          handleProductos,
           handleServicios,
           handleAgeCitas,
           handleConCitas,
@@ -148,6 +177,10 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
           handleAppBtn,
           handleServBtn,
           handleProdBtn,
+          handleConsBtn,
+          handleCanBtn,
+          handleManBtn,
+          handleInstBtn,
         },
       }))}
     </div>
