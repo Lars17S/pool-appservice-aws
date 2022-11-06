@@ -87,7 +87,7 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     const botMessage = createChatBotMessage(
       'Puedes consultar o cancelar tus citas',
       {
-        widget: 'AppOptions',
+        widget: 'Appointments',
       },
     );
     setState((prev) => ({
