@@ -27,7 +27,7 @@ function InstallationServices() {
   return (
     <Container>
       {services.map((item) => (
-        <InstallationItem id={item.id} image={item.image} key={item.id} />
+        <InstallationItem id={item.id} image={item.image} key={item.id} name={item.name} description={item.description} />
       ))}
     </Container>
   );

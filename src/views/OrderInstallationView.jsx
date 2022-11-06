@@ -2,12 +2,15 @@
 import React, { useState } from 'react';
 import { Button, TextField, Paper } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import { API, Auth } from 'aws-amplify';
+import { API, Auth, autoShowTooltip } from 'aws-amplify';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Stack from '@mui/material/Stack';
 import { createInstallationOrder } from '../graphql/mutations';
+import styled from "styled-components";
+import Announcement from '../components/Announcement';
+import Footer from '../components/Footer';
 
 function OrderInstallationView() {
   const location = useLocation();
@@ -66,11 +69,34 @@ function OrderInstallationView() {
     });
   }
 
+  const Container = styled.div``;
+
+  const FormContainer = styled.div`
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  `
+  const OrderForm = styled.form`
+    max-width: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+  `
+  const Title = styled.h1`
+    margin: 20px;
+  `;
+  
+
   return (
-    <Paper>
+    <Container>
+    <Announcement />
+    <Title>Agenda tu cita</Title>
+    <FormContainer>
       <Stack spacing={3}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <form onSubmit={createOrder}>
+          <OrderForm onSubmit={createOrder}>
             <TextField
               name="userName"
               label="Nombre completo"
@@ -78,6 +104,7 @@ function OrderInstallationView() {
         // value={formInput.userName}
         // onChange={handleInput}
               required
+              
             />
             <TextField
               name="phoneNumber"
@@ -118,10 +145,12 @@ function OrderInstallationView() {
               Agendar cita
               {' '}
             </Button>
-          </form>
+          </OrderForm>
         </LocalizationProvider>
       </Stack>
-    </Paper>
+      </FormContainer>
+      <Footer />
+    </Container>
   );
 }
 
