@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
 import '@aws-amplify/ui-react/styles.css';
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Routes, Navigate,
+} from 'react-router-dom';
 import Chatbot from 'react-chatbot-kit';
 import { ConditionallyRender } from 'react-util-kit';
 import { Auth, Hub } from 'aws-amplify';
@@ -56,11 +58,11 @@ function App() {
       <>
         <Header user={user} />
         <Routes>
-          <Route path="/subscribemaintenance" element={<SubscribeMaintenanceView />} />
-          <Route path="/orderinstallation" element={<OrderInstallationView />} />
-          <Route path="/installation" element={<InstallationView />} />
-          <Route path="/maintenance" element={<MaintenanceView />} />
-          <Route path="/profile" element={<ProfileView />} />
+          <Route path="/subscribemaintenance" element={user ? <SubscribeMaintenanceView /> : <Navigate to="/" />} />
+          <Route path="/orderinstallation" element={user ? <OrderInstallationView /> : <Navigate to="/" />} />
+          <Route path="/installation" element={user ? <InstallationView /> : <Navigate to="/" />} />
+          <Route path="/maintenance" element={user ? <MaintenanceView /> : <Navigate to="/" />} />
+          <Route path="/profile" element={user ? <ProfileView /> : <Navigate to="/" />} />
           <Route exact path="/" element={<HomepageView />} />
         </Routes>
         <div className="app-chatbot-container">
