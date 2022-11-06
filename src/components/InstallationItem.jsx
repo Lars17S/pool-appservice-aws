@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import React from "react";
+import ScheduleSendIcon from '@mui/icons-material/ScheduleSend';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import React from 'react';
 
 const Info = styled.div`
   opacity: .6;
@@ -78,7 +78,7 @@ const Name = styled.h1`
   margin-left: auto;
   margin-right: auto;
   color: white;
-`
+`;
 
 const Description = styled.p`
   width: 60%;
@@ -88,16 +88,21 @@ const Description = styled.p`
   margin-left: auto;
   margin-right: auto;
   color: white;
-`
+`;
 
-function InstallationItem({ id, image, name, description }) {
+function InstallationItem({
+  id, image, name, description,
+}) {
   return (
     <Container>
       <Circle />
       <Image src={image} />
       <Info>
-        <Name>Servicio 1</Name>
-        <Description>Servicio de alberca pequeña</Description>
+        <Name>
+          Servicio:
+          {name}
+        </Name>
+        <Description>{description}</Description>
         <Icon>
           <Link to="/orderinstallation" state={{ serviceId: id }}>
             <ScheduleSendIcon />
