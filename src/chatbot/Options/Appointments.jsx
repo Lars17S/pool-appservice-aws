@@ -64,27 +64,40 @@ function ProfileView() {
       {orders.map((row) => (
         <div>
           <div>
+            <p>{row.serviceId}</p>
             <p>{row.address}</p>
             <p>{row.appointmentDate}</p>
           </div>
-          <div>
-            <Button
-              variant="contained"
-              color="error"
-              endIcon={<CancelIcon />}
-              onClick={() => {
-                deleteOrder(row.id).then(getOrders());
-              }}
-            />
-            <Button
-              variant="contained"
-              color="success"
-              endIcon={<CheckIcon />}
-              onClick={() => {
-                confirmOrder(row.id).then(getOrders());
-              }}
-            />
-          </div>
+          {row.appointmentStatus !== 'CONFIRMED' ? (
+            <div>
+              <Button
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
+                onClick={() => {
+                  deleteOrder(row.id).then(getOrders());
+                }}
+              />
+              <Button
+                variant="contained"
+                color="success"
+                endIcon={<CheckIcon />}
+                onClick={() => {
+                  confirmOrder(row.id).then(getOrders());
+                }}
+              />
+            </div>
+          )
+            : (
+              <Button
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
+                onClick={() => {
+                  deleteOrder(row.id).then(getOrders());
+                }}
+              />
+            )}
         </div>
       ))}
     </div>
