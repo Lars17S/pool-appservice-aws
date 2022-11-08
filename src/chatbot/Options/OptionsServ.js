@@ -9,7 +9,7 @@ import './Options.css';
 function OptionsServ(props) {
   return (
     <div className="options-container">
-      <Link to="/manitenance">
+      <Link to="/maintenance">
         <button onClick={props.actionProvider.handleManBtn} className="option-button">
           Matenimiento
         </button>

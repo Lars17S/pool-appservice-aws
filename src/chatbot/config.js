@@ -6,6 +6,7 @@ import { createChatBotMessage } from 'react-chatbot-kit';
 import Options from './Options/Options';
 import OptionsApp from './Options/OptionsApp';
 import OptionsServ from './Options/OptionsServ';
+import Appointments from './Options/Appointments';
 
 const botName = '';
 
@@ -32,6 +33,10 @@ const config = {
     {
       widgetName: 'ServOptions',
       widgetFunc: (props) => <OptionsServ {...props} />,
+    },
+    {
+      widgetName: 'Appointments',
+      widgetFunc: (props) => <Appointments {...props} />,
     },
   ],
 };
