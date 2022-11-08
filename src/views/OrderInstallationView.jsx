@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { API, Auth } from 'aws-amplify';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -15,6 +15,7 @@ import Footer from '../components/Footer';
 
 function OrderInstallationView() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { serviceId } = location.state;
   const [dateTime, setDateTime] = useState(new Date());
 
@@ -68,22 +69,17 @@ function OrderInstallationView() {
       query: createInstallationOrder,
       variables: { input: data },
     });
+    navigate('/');
   }
 
   const Container = styled.div``;
 
   const FormContainer = styled.div`
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   `;
   const OrderForm = styled.form`
-    max-width: 50%;
-    display: block;
-    align-items: center;
-    justify-content: center;
+    max-width: 35%;
+    margin-left: 20px;
   `;
   const Title = styled.h1`
     margin: 20px;
@@ -94,13 +90,13 @@ function OrderInstallationView() {
       <Announcement />
       <Title>Agenda tu cita</Title>
       <FormContainer>
-        <Stack spacing={3}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <OrderForm onSubmit={createOrder}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <OrderForm onSubmit={createOrder}>
+            <Stack spacing={3}>
               <TextField
                 name="userName"
                 label="Nombre completo"
-                variant="outlined"
+                variant="standard"
         // value={formInput.userName}
         // onChange={handleInput}
                 required
@@ -108,7 +104,7 @@ function OrderInstallationView() {
               <TextField
                 name="phoneNumber"
                 label="Número teléfono o celular"
-                variant="outlined"
+                variant="standard"
         // value={formInput.phoneNumber}
         // onChange={handleInput}
                 required
@@ -116,12 +112,12 @@ function OrderInstallationView() {
               <TextField
                 name="email"
                 label="Email"
-                variant="outlined"
+                variant="standard"
               />
               <TextField
                 name="address"
                 label="Domicilio"
-                variant="outlined"
+                variant="standard"
         // value={formInput.address}
         // onChange={handleInput}
                 required
@@ -144,9 +140,10 @@ function OrderInstallationView() {
                 Agendar cita
                 {' '}
               </Button>
-            </OrderForm>
-          </LocalizationProvider>
-        </Stack>
+            </Stack>
+          </OrderForm>
+        </LocalizationProvider>
+
       </FormContainer>
       <Footer />
     </Container>

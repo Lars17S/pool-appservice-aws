@@ -121,16 +121,27 @@ function ProfileView() {
                   </Button>
                 </TableCell>
                 <TableCell align="right">
-                  <Button
-                    variant="contained"
-                    color="success"
-                    endIcon={<CheckIcon />}
-                    onClick={() => {
-                      confirmOrder(row.id).then(getOrders());
-                    }}
-                  >
-                    Confirmar
-                  </Button>
+                  {row.appointmentStatus === 'CONFIRMED' ? (
+                    <Button
+                      variant="contained"
+                      color="success"
+                      disabled
+                      endIcon={<CheckIcon />}
+                    >
+                      Confirmar
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="success"
+                      endIcon={<CheckIcon />}
+                      onClick={() => {
+                        confirmOrder(row.id).then(getOrders());
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
