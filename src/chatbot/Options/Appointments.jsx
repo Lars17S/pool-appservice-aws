@@ -64,9 +64,9 @@ function ProfileView() {
       {orders.map((row) => (
         <div>
           <div>
-            <p>{row.serviceId}</p>
+            <p>{'Servicio'}</p>
             <p>{row.address}</p>
-            <p>{row.appointmentDate}</p>
+            <p>{new Date(row.appointmentDate).toDateString()}</p>
           </div>
           {row.appointmentStatus !== 'CONFIRMED' ? (
             <div>
@@ -86,9 +86,15 @@ function ProfileView() {
                   confirmOrder(row.id).then(getOrders());
                 }}
               />
+              <br/>
+              <br/>
+              <hr/>
+              <br/>
             </div>
+            
           )
             : (
+              <div>
               <Button
                 variant="contained"
                 color="error"
@@ -97,7 +103,13 @@ function ProfileView() {
                   deleteOrder(row.id).then(getOrders());
                 }}
               />
+              <br/>
+              <br/>
+              <hr/>
+              <br/>
+            </div>
             )}
+            
         </div>
       ))}
     </div>

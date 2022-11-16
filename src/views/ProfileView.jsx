@@ -101,12 +101,12 @@ function ProfileView() {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.serviceId}
+                  {'Servicio'}
                 </TableCell>
                 <TableCell align="right">{row.phoneNumber}</TableCell>
                 <TableCell align="right">{row.email}</TableCell>
                 <TableCell align="right">{row.address}</TableCell>
-                <TableCell align="right">{row.appointmentDate}</TableCell>
+                <TableCell align="right">{new Date(row.appointmentDate).toDateString()}</TableCell>
                 <TableCell align="right">{row.appointmentStatus}</TableCell>
                 <TableCell align="right">
                   <Button
