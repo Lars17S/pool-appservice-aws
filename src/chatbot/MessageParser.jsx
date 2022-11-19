@@ -12,16 +12,16 @@ function MessageParser({ children, actions }) {
       actions.handleWrokingDays();
     }
     if (message.includes('crear') || message.includes('agendar')) {
-      actions.handleAgeCitas();
+      actions.handleAppBtn();
     }
     if (message.includes('cambiar') || message.includes('modificar fecha')) {
-      actions.handleModCitas();
+      actions.handleAppBtn();
     }
     if (message.includes('cancelar') || message.includes('agendar')) {
-      actions.handleCanCitas();
+      actions.handleAppBtn();
     }
     if (message.includes('cuando es') || message.includes('fecha de mi cita')) {
-      actions.handleConCitas();
+      actions.handleAppBtn();
     }
     if (message.includes('contacto') || message.includes('numero') || message.includes('correo')) {
       actions.handleContacto();
@@ -29,11 +29,8 @@ function MessageParser({ children, actions }) {
     if (message.includes('metodo de pago') || message.includes('pago')) {
       actions.handleMetodosPago();
     }
-    if (message.includes('productos')) {
-      actions.handleProductos();
-    }
     if (message.includes('servicios')) {
-      actions.handleServicios();
+      actions.handleServBtn();
     }
   };
 

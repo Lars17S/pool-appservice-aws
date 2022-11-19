@@ -38,17 +38,9 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
-  const handleServicios = () => {
-    const botMessage = createChatBotMessage('Para conocer el catalogo de servicios, ingresa al apartado de servicios en esta página.');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
 
   const handleAgeCitas = () => {
-    const botMessage = createChatBotMessage('Para agendar una cita, comuniquese a nuestro correo pool.app.service@gmail.com');
+    const botMessage = createChatBotMessage('Para agendar una cita, ingrese a el apartado del servicio que desee agendar');
 
     setState((prev) => ({
       ...prev,
@@ -56,32 +48,6 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
-  const handleConCitas = () => {
-    const botMessage = createChatBotMessage('Para consultar su cita, envié un correo a pool.app.service@gmail.com con su numero de servicio');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-
-  const handleCanCitas = () => {
-    const botMessage = createChatBotMessage('Para cancelar su cita, envié un correo a pool.app.service@gmail.com con su numero de servicio y motivo de cancelación');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-
-  const handleModCitas = () => {
-    const botMessage = createChatBotMessage('Para modificar la fecha de su cita, envié un correo a pool.app.service@gmail.com con su numero de servicio y la nueva fecha');
-
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
 
   const handleAppBtn = () => {
     const botMessage = createChatBotMessage(
@@ -96,24 +62,7 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
-  const handleConsBtn = () => {
-    const botMessage = createChatBotMessage(
-      'Ingresa el folio de la cita',
-    );
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-  const handleCanBtn = () => {
-    const botMessage = createChatBotMessage(
-      'Ingresa el folio de la cita a cancelar',
-    );
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
+
 
   const handleServBtn = () => {
     const botMessage = createChatBotMessage(
@@ -148,19 +97,6 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
     }));
   };
 
-  const handleProdBtn = () => {
-    const botMessage = createChatBotMessage(
-      'Puedes consultar los productos en la sección de servicios',
-      // {
-      //   widget: "Agregar widget de servicios",
-      // }
-    );
-    setState((prev) => ({
-      ...prev,
-      messages: [...prev.messages, botMessage],
-    }));
-  };
-
   return (
     <div>
       {React.Children.map(children, (child) => React.cloneElement(child, {
@@ -169,16 +105,9 @@ function ActionProvider({ createChatBotMessage, setState, children }) {
           handleWrokingDays,
           handleContacto,
           handleMetodosPago,
-          handleServicios,
           handleAgeCitas,
-          handleConCitas,
-          handleCanCitas,
-          handleModCitas,
           handleAppBtn,
           handleServBtn,
-          handleProdBtn,
-          handleConsBtn,
-          handleCanBtn,
           handleManBtn,
           handleInstBtn,
         },
